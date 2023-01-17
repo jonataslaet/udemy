@@ -1,0 +1,35 @@
+wget -O- https://apt.corretto.aws/corretto.key | sudo apt-key add - 
+sudo add-apt-repository 'deb https://apt.corretto.aws stable main'
+sudo apt-get update; sudo apt-get install -y java-11-amazon-corretto-jdk
+sudo apt-get update; sudo apt-get install -y java-11-amazon-corretto-jdk
+
+wget https://archive.apache.org/dist/kafka/3.1.0/kafka_2.13-3.1.0.tgz
+
+tar xzf kafka_2.13-3.1.0.tgz
+
+PATH="$PATH:~/kafka_2.13-3.0.0/bin"
+PATH="$PATH:~/kafka_2.13-3.0.0/bin"
+
+zookeeper-server-start.sh ~/kafka_2.13-3.1.0/config/zookeeper.properties
+
+kafka-server-start.sh ~/kafka_2.13-3.1.0/config/server.properties
+
+-----------------------
+
+COMO RODAR O "kafka"
+
+1. Abrir o Ubunto no Windows
+2. Digitar: zookeeper-server-start.sh ~/kafka_2.13-3.1.0/config/zookeeper.properties
+3. Abrir outro terminal e digitar: kafka-server-start.sh ~/kafka_2.13-3.1.0/config/server.properties
+
+-----------------------
+
+CRIAR UM TOPICO CHAMADO "demo_java", COM 3 PARTIÇÕES E FATOR 1 DE REPLICAÇÃO:
+kafka-topics --bootstrap-server localhost:9092 --create --topic demo_java --partitions 3 --replication-factor 1
+
+-----------------------
+
+ESCUTAR UM TÓPICO CHAMADO "demo_java":
+kafka-console-consumer --bootstrap-server localhost:9092 --topics demo_java
+
+-----------------------
