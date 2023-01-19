@@ -1,0 +1,15 @@
+### General ###
+target/
+!.mvn/wrapper/maven-wrapper.jar
+
+### Sonarlint ###
+ws-apache-kafka/kafka-beginners-course/.idea/sonarlint/
+
+### IntelliJ IDEA ###
+.idea
+*.iws
+*.iml
+*.ipr
+
+### Classes compiladas ###
+*.class
