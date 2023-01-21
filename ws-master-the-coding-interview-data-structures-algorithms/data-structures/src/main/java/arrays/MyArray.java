@@ -1,6 +1,7 @@
 package arrays;
 
 import java.util.Arrays;
+import java.util.Objects;
 
 public class MyArray {
   private Integer length;
@@ -13,7 +14,14 @@ public class MyArray {
 
   public MyArray(Object[] elements) {
     this.data = elements;
-    this.length = elements.length;
+    int i = 0;
+    for (Object object :
+        elements) {
+      if (Objects.nonNull(object)) {
+        i++;
+      }
+    }
+    this.length = i;
   }
 
   public Object get(int index) {

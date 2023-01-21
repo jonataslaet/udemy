@@ -15,3 +15,5 @@ ws-apache-kafka/kafka-beginners-course/.idea/sonarlint/
 *.class
 ws-aws-certified-cloud-practitioner-new/new_user_credentials.csv
 *.opus
+ws-master-the-coding-interview-data-structures-algorithms/data-structures/.gradle/checksums/**
+ws-master-the-coding-interview-data-structures-algorithms/data-structures/.gradle/**
