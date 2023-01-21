@@ -3,11 +3,24 @@ package arrays;
 import java.util.Arrays;
 
 public class MyArray {
-  private int length;
-  private Object[] data = new Object[5];
+  private Integer length;
+  private Object[] data;
+
+  public MyArray() {
+    this.data = new Object[10];
+    this.length = 0;
+  }
+
+  public MyArray(Object[] elements) {
+    this.data = elements;
+    this.length = elements.length;
+  }
 
   public Object get(int index) {
-    return this.data[index];
+    if (index < this.length) {
+      return this.data[index];
+    }
+    return null;
   }
 
   public Object push(Object element) {
@@ -26,6 +39,10 @@ public class MyArray {
     Object deletedItem = this.data[index];
     shiftElements(index);
     return deletedItem;
+  }
+
+  public Integer getLength() {
+    return this.length;
   }
 
   private void shiftElements(int index) {
