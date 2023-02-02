@@ -20,3 +20,8 @@ ws-master-the-coding-interview-data-structures-algorithms/data-structures/.gradl
 
 ### Full-Stack Angular Spring Boot Tutorial ###
 ws-full-stack-angular-spring-boot-tutorial/typescrypt-training/node_modules/
+
+### Master the Coding Interview: Data Structures + Algorithms ###
+ws-master-the-coding-interview-data-structures-algorithms/data-structures/build/libs/data-structures-1.0-SNAPSHOT.jar
+ws-master-the-coding-interview-data-structures-algorithms/data-structures/build/tmp/jar/MANIFEST.MF
+ws-master-the-coding-interview-data-structures-algorithms/data-structures/src/main/java/challenges/**
