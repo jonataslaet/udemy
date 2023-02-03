@@ -1,6 +1,7 @@
 ### General ###
 target/
 !.mvn/wrapper/maven-wrapper.jar
+**/node_modules/
 
 ### Sonarlint ###
 ws-apache-kafka/kafka-beginners-course/.idea/sonarlint/
@@ -17,9 +18,6 @@ ws-aws-certified-cloud-practitioner-new/new_user_credentials.csv
 *.opus
 ws-master-the-coding-interview-data-structures-algorithms/data-structures/.gradle/checksums/**
 ws-master-the-coding-interview-data-structures-algorithms/data-structures/.gradle/**
-
-### Full-Stack Angular Spring Boot Tutorial ###
-ws-full-stack-angular-spring-boot-tutorial/typescrypt-training/node_modules/
 
 ### Master the Coding Interview: Data Structures + Algorithms ###
 ws-master-the-coding-interview-data-structures-algorithms/data-structures/build/libs/data-structures-1.0-SNAPSHOT.jar
