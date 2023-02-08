@@ -1,7 +1,6 @@
 ### General ###
 target/
 !.mvn/wrapper/maven-wrapper.jar
-**/node_modules/
 
 ### Sonarlint ###
 ws-apache-kafka/kafka-beginners-course/.idea/sonarlint/
@@ -23,3 +22,18 @@ ws-master-the-coding-interview-data-structures-algorithms/data-structures/.gradl
 ws-master-the-coding-interview-data-structures-algorithms/data-structures/build/libs/data-structures-1.0-SNAPSHOT.jar
 ws-master-the-coding-interview-data-structures-algorithms/data-structures/build/tmp/jar/MANIFEST.MF
 ws-master-the-coding-interview-data-structures-algorithms/data-structures/src/main/java/challenges/**
+
+### Full Stack: Angular and Java Spring Boot E-Commerce Website ###
+**/node_modules/
+
+### Mastering Data Structures & Algorithms using C and C++ ###
+ws-datastructurescncpp/**/*.exe
+ws-datastructurescncpp/.vscode/settings.json
+
+### Aprenda Flutter e Desenvolva Apps Para Android e IOS 2022 ###
+ws-curso-flutter/**/generated_plugin_registrant.cc
+ws-curso-flutter/**/generated_plugin_registrant.h
+ws-curso-flutter/**/generated_plugins.cmake
+ws-curso-flutter/**/GeneratedPluginRegistrant.swift
+ws-curso-flutter/**/generated_plugin_registrant.cc
+ws-curso-flutter/**/generated_plugin_registrant.h
