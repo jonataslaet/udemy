@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:projeto_perguntas/questao.dart';
 import 'package:projeto_perguntas/resposta.dart';
 
 class Questionario extends StatelessWidget {
   final List<Map<String, Object>> perguntas;
   final int perguntaSelecionada;
-  final void Function() responder;
+  final void Function(int) responder;
 
   Questionario({
     required this.perguntas,
@@ -20,14 +19,20 @@ class Questionario extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    List<String> respostas = temPerguntaSelecionada
+    List<Map<String, Object>> respostas = temPerguntaSelecionada
         ? perguntas[perguntaSelecionada].cast()['respostas']
+            as List<Map<String, Object>>
         : [];
 
     return Column(
       children: [
         Questao(perguntas[perguntaSelecionada]['texto'].toString()),
-        ...respostas.map((alternativa) => Resposta(alternativa, responder)),
+        ...respostas.map((alternativa) {
+          return Resposta(
+            alternativa['texto'].toString(),
+            () => responder(int.parse(alternativa['nota'].toString())),
+          );
+        }),
       ],
     );
   }
