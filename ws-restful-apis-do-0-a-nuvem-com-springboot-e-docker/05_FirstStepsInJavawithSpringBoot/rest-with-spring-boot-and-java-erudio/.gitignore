@@ -1,8 +1,24 @@
+### Other Files ###
 HELP.md
 target/
 !.mvn/wrapper/maven-wrapper.jar
 !**/src/main/**/target/
 !**/src/test/**/target/
+*.jar
+*.war
+*.ear
+*.class
+/node_modules
+
+### SSH Keys ###
+*.pem
+*.ppk
+
+### Mobile Tools for Java (J2ME) ###
+.mtj.tmp/
+
+### Merge Files ###
+*.bak
 
 ### STS ###
 .apt_generated
@@ -12,12 +28,21 @@ target/
 .settings
 .springBeans
 .sts4-cache
+**/.project
+**/.classpath
+**/.settings/
+/bin/
+blog/bin/
+**/.tern-project
 
 ### IntelliJ IDEA ###
 .idea
 *.iws
 *.iml
 *.ipr
+**/*.iml
+**/.idea
+**/.gradle
 
 ### NetBeans ###
 /nbproject/private/
@@ -31,3 +56,6 @@ build/
 
 ### VS Code ###
 .vscode/
+
+### Virtual Machine Crash Logs, see http://www.java.com/en/download/help/error_hotspot.xml ###
+hs_err_pid*
