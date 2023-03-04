@@ -1,0 +1,11 @@
+version: '3.8'
+services:
+  postgresdb:
+    image: mysql:8.0
+    environment:
+      - MYSQL_USER=jonataslaet
+      - MYSQL_PASSWORD=blendo273
+      - MYSQL_ROOT_PASSWORD=blendo273
+      - MYSQL_DATABASE=dblaet
+    ports:
+      - '3306:3306'

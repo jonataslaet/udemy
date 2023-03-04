@@ -1,4 +1,4 @@
-package com.github.jonataslaet;
+package com.github.jonataslaet.entities;
 
 public class Greeting {
   private final long id;

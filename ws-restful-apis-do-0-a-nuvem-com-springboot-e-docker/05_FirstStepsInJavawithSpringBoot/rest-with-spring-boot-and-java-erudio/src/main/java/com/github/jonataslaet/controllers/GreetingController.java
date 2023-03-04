@@ -1,6 +1,6 @@
 package com.github.jonataslaet.controllers;
 
-import com.github.jonataslaet.Greeting;
+import com.github.jonataslaet.entities.Greeting;
 import java.util.concurrent.atomic.AtomicLong;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
