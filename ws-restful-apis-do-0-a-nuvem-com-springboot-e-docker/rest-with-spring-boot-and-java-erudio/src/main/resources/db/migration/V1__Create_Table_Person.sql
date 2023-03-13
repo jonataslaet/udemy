@@ -5,4 +5,4 @@ CREATE TABLE `person` (
   `gender` varchar(6) DEFAULT NULL,
   `address` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`id`)
-);
+) ENGINE=InnoDB CHARACTER SET latin1 COLLATE latin1_swedish_ci;

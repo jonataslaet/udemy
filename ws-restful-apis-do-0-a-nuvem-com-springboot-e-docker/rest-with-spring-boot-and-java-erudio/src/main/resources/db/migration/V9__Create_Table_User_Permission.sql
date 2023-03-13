@@ -5,4 +5,4 @@
   KEY `fk_user_permission_permission` (`id_permission`),
   CONSTRAINT `fk_user_permission` FOREIGN KEY (`id_user`) REFERENCES `users` (`id`),
   CONSTRAINT `fk_user_permission_permission` FOREIGN KEY (`id_permission`) REFERENCES `permission` (`id`)
-) ENGINE=InnoDB;
+) ENGINE=InnoDB CHARACTER SET latin1 COLLATE latin1_swedish_ci;
