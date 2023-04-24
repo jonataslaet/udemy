@@ -1,0 +1,34 @@
+cors:
+  originPatterns: http://localhost:3000,http://localhost:4200,http://localhost:8080,https://erudio.com.br
+security:
+  jwt:
+    token:
+      secret-key: ${JWT_SECRET:MY-JWT-SECRET}
+      expire-length: 3600000
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/dblaet?useTimezone=true&serverTimezone=UTC
+    username: jonataslaet
+    password: blendo273
+  jpa:
+    hibernate:
+      ddl-auto: none
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL8Dialect
+      show-sql: false
+  flyway:
+    baselineOnMigrate: true
+
+springdoc:
+  pathsToMatch:
+    - /auth/**
+    - /**
+  api-docs:
+    path: /api-docs
+  swagger-ui:
+    path: /swagger-ui.html
+
+
+
