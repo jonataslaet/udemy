@@ -21,7 +21,7 @@ class ExpensesApp extends StatelessWidget {
 class MyHomePage extends StatelessWidget {
   final _transactions = [
     Transaction(id: 't1', title: 'Conta de água', value: 50.76, date: DateTime.now()),
-    Transaction(id: 't2', title: 'Conta de luz', value: 211.76, date: DateTime.now())
+    Transaction(id: 't2', title: 'Conta de luz', value: 211.70, date: DateTime.now())
   ];
   @override
   Widget build(BuildContext context) {
@@ -57,9 +57,9 @@ class MyHomePage extends StatelessWidget {
                           width: 2,
                         )
                       ),
-                      padding: EdgeInsets.all(10),
+                      padding: const EdgeInsets.all(10),
                       child: Text(
-                        t.value.toString(),
+                        'R\$ ${t.value.toStringAsFixed(2)}',
                         style: const TextStyle(
                           fontWeight: FontWeight.bold,
                           fontSize: 20,
