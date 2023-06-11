@@ -1,10 +1,13 @@
-import 'package:expenses/models/transaction.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
-import 'package:intl/intl.dart';
+import 'dart:math';
 
-main() => runApp(ExpensesApp());
+import 'package:expenses/components/transaction_form.dart';
+import 'package:expenses/components/transaction_list.dart';
+import 'package:flutter/material.dart';
+
+import 'models/transaction.dart';
+
+
+main() => runApp(const ExpensesApp());
 
 class ExpensesApp extends StatelessWidget {
   const ExpensesApp({super.key});
@@ -17,10 +20,13 @@ class ExpensesApp extends StatelessWidget {
   }
 }
 
-class MyHomePage extends StatelessWidget {
-  
-  final titleController = TextEditingController();
-  final valueController = TextEditingController();
+class MyHomePage extends StatefulWidget {
+
+  @override
+  State<MyHomePage> createState() => _MyHomePageState();
+}
+
+class _MyHomePageState extends State<MyHomePage> {
 
   final _transactions = [
     Transaction(
@@ -28,11 +34,40 @@ class MyHomePage extends StatelessWidget {
     Transaction(
         id: 't2', title: 'Conta de luz', value: 211.70, date: DateTime.now())
   ];
+  
+  _openTransactionFormModal(BuildContext buildContext) {
+    showModalBottomSheet(
+      context: buildContext, 
+      builder: (_){
+        return TransactionForm(_addTransaction);
+      }
+    );
+  }
+
+  _addTransaction(String title, double value) {
+    final newTransaction = Transaction(
+      id: Random().nextDouble().toString(),
+      title: title,
+      value: value,
+      date: DateTime.now()
+    );
+    setState(() {
+      _transactions.add(newTransaction);
+    });
+    Navigator.of(context).pop();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Despesas pessoais'),
+        actions: [
+          IconButton(
+            onPressed: ()=> _openTransactionFormModal(context), 
+            icon: const Icon(Icons.add),
+          )
+        ],
       ),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -43,86 +78,14 @@ class MyHomePage extends StatelessWidget {
                 Card(color: Colors.blue, elevation: 5, child: Text('Gráfico')),
           ),
           Column(
-            children: _transactions.map((t) {
-              return Card(
-                child: Row(children: [
-                  Container(
-                    margin: const EdgeInsets.symmetric(
-                        horizontal: 15, vertical: 10),
-                    decoration: BoxDecoration(
-                        border: Border.all(
-                      color: Colors.purple,
-                      width: 2,
-                    )),
-                    padding: const EdgeInsets.all(10),
-                    child: Text(
-                      'R\$ ${t.value.toStringAsFixed(2)}',
-                      style: const TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontSize: 20,
-                          color: Colors.purple),
-                    ),
-                  ),
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        t.title,
-                        style: const TextStyle(
-                          fontSize: 16,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                      Text(DateFormat('d MMM y').format(t.date),
-                          style: const TextStyle(
-                            color: Colors.grey,
-                          )),
-                    ],
-                  )
-                ]),
-              );
-            }).toList(),
-          ),
-          Card(
-            elevation: 5,
-            child: Padding(
-              padding: const EdgeInsets.all(10.0),
-              child: Column(
-                children: [
-                  TextField(
-                    controller: titleController,
-                    decoration: const InputDecoration(
-                      labelText: 'Título',
-                    ),
-                  ),
-                  TextField(
-                    controller: valueController,
-                    decoration: const InputDecoration(
-                      labelText: 'Valor (R\$)',
-                    ),
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    children: [
-                      TextButton(
-                        onPressed: () {
-                          print(titleController.text);
-                          print(valueController.text);
-                        },
-                        style: TextButton.styleFrom(
-                          backgroundColor: Colors.white,
-                          foregroundColor: Colors.purple,
-                        ),
-                        child: const Text("Nova Transação"),
-                      ),
-                    ],
-                  )
-                ],
-              ),
-            ),
+            children: [
+              TransactionList(_transactions)
+            ],
           )
         ],
       ),
+      floatingActionButton: FloatingActionButton(onPressed: ()=> _openTransactionFormModal(context), child: const Icon(Icons.add),),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
     );
   }
 }
