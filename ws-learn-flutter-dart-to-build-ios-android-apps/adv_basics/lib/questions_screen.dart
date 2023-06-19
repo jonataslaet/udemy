@@ -25,31 +25,34 @@ class _QuestionsScreenState extends State<QuestionsScreen> {
   @override
   Widget build(BuildContext context) {
     final currentQuestion = questions[currentQuestionIndex];
-    return Container(
-      margin: const EdgeInsets.all(40),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: [
-          Text(
-            currentQuestion.question,
-            style: GoogleFonts.lato(
-              color: const Color.fromARGB(255, 201, 153, 251),
-              fontSize: 24,
-              fontWeight: FontWeight.bold,
+    return SizedBox(
+      width: double.infinity,
+      child: Container(
+        margin: const EdgeInsets.all(40),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            Text(
+              currentQuestion.question,
+              style: GoogleFonts.lato(
+                color: const Color.fromARGB(255, 201, 153, 251),
+                fontSize: 24,
+                fontWeight: FontWeight.bold,
+              ),
+              textAlign: TextAlign.center,
             ),
-            textAlign: TextAlign.center,
-          ),
-          
-          const SizedBox(
-            height: 30,
-          ),
-          ...currentQuestion.getShuffledList().map(
-            (currentAnswer) {
-              return AnswerButton(onTap: (){answerQuestion(currentAnswer);}, answerText: currentAnswer);
-            },
-          ),
-        ],
+            
+            const SizedBox(
+              height: 30,
+            ),
+            ...currentQuestion.getShuffledList().map(
+              (currentAnswer) {
+                return AnswerButton(onTap: (){answerQuestion(currentAnswer);}, answerText: currentAnswer);
+              },
+            ),
+          ],
+        ),
       ),
     );
   }
