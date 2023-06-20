@@ -7,18 +7,27 @@ class QuestionsSummary extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    for (var element in summaryData) {
+      print('element = ${element}');
+    }
     return Column(
       children: summaryData
           .map(
             (data) => Row(
               children: [
                 Text(((data['question_index'] as int) + 1).toString()),
-                Column(children: [
-                  Text(data['question'] as String),
-                  const SizedBox(height: 5,),
-                  Text(data['user_answer'] as String),
-                  Text(data['correct_answer'] as String),
-                ],),
+                Expanded(
+                  child: Column(
+                    children: [
+                      Text(data['question'] as String),
+                      const SizedBox(
+                        height: 5,
+                      ),
+                      Text(data['user_answer'] as String),
+                      Text(data['correct_answer'] as String),
+                    ],
+                  ),
+                ),
               ],
             ),
           )
