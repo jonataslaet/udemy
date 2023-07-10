@@ -12,4 +12,9 @@ public class GreetingsController {
         String hello = "Hello, World!";
         return ResponseEntity.ok().body(hello);
     }
+
+    @GetMapping("/hello-bean")
+    public GreatingBean getHelloBean() {
+        return new GreatingBean("Hello, World!");
+    }
 }
