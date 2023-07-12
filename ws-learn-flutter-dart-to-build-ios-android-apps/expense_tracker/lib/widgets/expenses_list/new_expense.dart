@@ -13,7 +13,8 @@ class NewExpense extends StatefulWidget {
 class _NewExpenseState extends State<NewExpense> {
   final titleController = TextEditingController();
   final amountController = TextEditingController();
-  DateTime? selectedDate;
+  DateTime? _selectedDate;
+  Category? _selectedCategory = Category.leisure;
 
   void _presentDatePicker() async {
     final now = DateTime.now();
@@ -25,7 +26,7 @@ class _NewExpenseState extends State<NewExpense> {
       lastDate: now,
     );
     setState(() {
-      selectedDate = pickedDate;
+      _selectedDate = pickedDate;
     });
   }
 
@@ -75,9 +76,9 @@ class _NewExpenseState extends State<NewExpense> {
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
                     Text(
-                      selectedDate == null
+                      _selectedDate == null
                           ? 'No date selected'
-                          : formatter.format(selectedDate!),
+                          : formatter.format(_selectedDate!),
                     ),
                     IconButton(
                       onPressed: _presentDatePicker,
@@ -88,8 +89,30 @@ class _NewExpenseState extends State<NewExpense> {
               ),
             ],
           ),
+          const SizedBox(
+            height: 16,
+          ),
           Row(
             children: [
+              DropdownButton(
+                value: _selectedCategory,
+                items: Category.values
+                    .map(
+                      (category) => DropdownMenuItem(
+                        value: category,
+                        child: Text(
+                          category.name.toUpperCase(),
+                        ),
+                      ),
+                    )
+                    .toList(),
+                onChanged: (value) {
+                  setState(() {
+                    _selectedCategory = value;
+                  });
+                },
+              ),
+              const Spacer(),
               ElevatedButton(
                 onPressed: () {
                   print('Title = ${titleController.text}');
