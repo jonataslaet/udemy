@@ -2,7 +2,8 @@ import 'package:expense_tracker/models/expense.dart';
 import 'package:flutter/material.dart';
 
 class NewExpense extends StatefulWidget {
-  const NewExpense({super.key});
+  const NewExpense({super.key, required this.onAddExpense});
+  final void Function(Expense expense) onAddExpense;
 
   @override
   State<NewExpense> createState() {
@@ -15,6 +16,40 @@ class _NewExpenseState extends State<NewExpense> {
   final amountController = TextEditingController();
   DateTime? _selectedDate;
   Category? _selectedCategory = Category.leisure;
+
+  void _saveDataInput() {
+    final amount = double.tryParse(amountController.text);
+    final amountIsInvalid = amount == null || amount <= 0;
+    if (titleController.text.trim().isEmpty ||
+        amountIsInvalid ||
+        _selectedDate == null) {
+      showDialog(
+        context: context,
+        builder: (ctx) => AlertDialog(
+          title: const Text('Invalid Input'),
+          actions: [
+            TextButton(
+              onPressed: () {
+                Navigator.pop(ctx);
+              },
+              child: const Text(
+                'Please, make sure the amount, title and date are valid.',
+              ),
+            ),
+          ],
+        ),
+      );
+      return;
+    }
+    widget.onAddExpense(
+      Expense(
+        title: titleController.text,
+        amount: amount,
+        date: _selectedDate!,
+        category: _selectedCategory!,
+      ),
+    );
+  }
 
   void _presentDatePicker() async {
     final now = DateTime.now();
@@ -114,10 +149,7 @@ class _NewExpenseState extends State<NewExpense> {
               ),
               const Spacer(),
               ElevatedButton(
-                onPressed: () {
-                  print('Title = ${titleController.text}');
-                  print('Amount = ${amountController.text}');
-                },
+                onPressed: _saveDataInput,
                 child: const Text('Save Input'),
               ),
               TextButton(
