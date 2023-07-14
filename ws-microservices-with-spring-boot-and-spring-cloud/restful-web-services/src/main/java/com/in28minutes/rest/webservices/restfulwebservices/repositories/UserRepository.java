@@ -11,14 +11,14 @@ import java.util.Objects;
 
 @Repository
 public class UserRepository {
-
+    private static int countUsers = 0;
     private static List<User> users = new ArrayList<>();
 
     static {
         users.addAll(Arrays.asList(
-                new User(1, "Adam", LocalDate.now().minusYears(30)),
-                new User(2, "Eve", LocalDate.now().minusYears(25)),
-                new User(3, "Jim", LocalDate.now().minusYears(20))
+                new User(++countUsers, "Adam", LocalDate.now().minusYears(30)),
+                new User(++countUsers, "Eve", LocalDate.now().minusYears(25)),
+                new User(++countUsers, "Jim", LocalDate.now().minusYears(20))
         ));
     }
 
@@ -28,5 +28,11 @@ public class UserRepository {
 
     public User findOne(Integer id) {
         return users.stream().filter(user -> Objects.equals(user.getId(), id)).findFirst().orElse(null);
+    }
+
+    public User save(User user) {
+        User savedUser = new User(++countUsers, user.getName(), user.getBirthDate());
+        users.add(savedUser);
+        return savedUser;
     }
 }
