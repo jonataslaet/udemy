@@ -1,5 +1,7 @@
 package com.in28minutes.rest.webservices.restfulwebservices.entities;
 
+import com.in28minutes.rest.webservices.restfulwebservices.controllers.dtos.UserCreateDTO;
+
 import java.time.LocalDate;
 
 public class User {
@@ -7,6 +9,11 @@ public class User {
     private Integer id;
     private String name;
     private LocalDate birthDate;
+
+    public User(UserCreateDTO userCreateDTO) {
+        this.birthDate = userCreateDTO.getBirthDate();
+        this.name = userCreateDTO.getName();
+    }
 
     public User(Integer id, String name, LocalDate birthDate) {
         this.id = id;

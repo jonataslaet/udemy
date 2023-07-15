@@ -35,4 +35,8 @@ public class UserRepository {
         users.add(savedUser);
         return savedUser;
     }
+
+    public void delete(User user) {
+        users.removeIf(currentUser -> Objects.nonNull(user) && Objects.equals(user.getId(), currentUser.getId()));
+    }
 }
