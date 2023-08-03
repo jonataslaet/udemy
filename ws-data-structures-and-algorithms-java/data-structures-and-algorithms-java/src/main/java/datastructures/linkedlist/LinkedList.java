@@ -47,6 +47,83 @@ public class LinkedList {
         return current;
     }
 
+    public void prepend(int value) {
+        Node newNode = new Node(value);
+        if (length == 0) {
+            head = newNode;
+            tail = newNode;
+        } else {
+            newNode.next = head;
+            head = newNode;
+        }
+        length++;
+    }
+
+    public Node removeFirst() {
+        if (length == 0) return null;
+        Node temp = head;
+        if (length == 1) {
+            temp.next = null;
+            head = null;
+            tail = null;
+            length = 0;
+            return temp;
+        }
+        head = head.next;
+        temp.next = null;
+        length--;
+        return temp;
+    }
+
+    public Node get(int index) {
+        if (index < 0 || index >= length) return null;
+        if (index == 0) return head;
+        Node temp = head;
+        for (int i = 0; i < index; i++) {
+            temp = temp.next;
+        }
+        return temp;
+    }
+
+    public boolean set(int index, int value) {
+        Node node = get(index);
+        if (node != null) {
+            node.value = value;
+            return true;
+        }
+        return false;
+    }
+
+    public boolean insert(int index, int value) {
+        if (index < 0 || index > length) return false;
+        if (index == 0) {
+            prepend(value);
+            return true;
+        }
+        if (index == length) {
+            append(value);
+            return true;
+        }
+        Node previousNode = get(index - 1);
+        Node newNode = new Node(value);
+        newNode.next = previousNode.next;
+        previousNode.next = newNode;
+        length++;
+        return true;
+    }
+
+    public Node remove(int index) {
+        if (index < 0 || index >= length) return null;
+        if (index == 0) return removeFirst();
+        if (index == length - 1) removeLast();
+        Node previous = get(index - 1);
+        Node temp = previous.next;
+        previous.next = temp.next;
+        temp.next = null;
+        length--;
+        return temp;
+    }
+
     public void getHead() {
         System.out.println("Head: " + head.value);
     }
