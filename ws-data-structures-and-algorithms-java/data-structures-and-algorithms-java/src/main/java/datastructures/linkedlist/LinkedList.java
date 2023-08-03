@@ -12,6 +12,41 @@ public class LinkedList {
         length = 1;
     }
 
+    public void append(int value) {
+        Node newNode = new Node(value);
+        if (length == 0) {
+            head = newNode;
+            tail = newNode;
+        } else {
+            tail.next = newNode;
+            tail = newNode;
+        }
+        length++;
+    }
+
+    public Node removeLast() {
+        Node temp = head;
+        if (length == 0) return null;
+        if (length == 1) {
+            head = null;
+            tail = null;
+            length = 0;
+            return temp;
+        }
+
+        Node current = head;
+        while(current.next != null) {
+            temp = current;
+            current = current.next;
+        }
+        tail = temp;
+        tail.next = null;
+        temp = null;
+        length--;
+
+        return current;
+    }
+
     public void getHead() {
         System.out.println("Head: " + head.value);
     }
