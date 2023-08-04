@@ -10,6 +10,7 @@ public class Main {
         myLinkedList.set(0, 2);
         myLinkedList.insert(1, 4);
         myLinkedList.remove(3);
+        myLinkedList.reverse();
         myLinkedList.getHead();
         myLinkedList.getTail();
         myLinkedList.getLength();

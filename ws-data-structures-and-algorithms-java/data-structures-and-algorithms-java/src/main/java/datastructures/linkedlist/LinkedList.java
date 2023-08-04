@@ -124,6 +124,20 @@ public class LinkedList {
         return temp;
     }
 
+    public void reverse() {
+        Node temp = head;
+        head = tail;
+        tail = temp;
+        Node previous = null;
+        Node after = temp.next;
+        while (after != null) {
+            after = temp.next;
+            temp.next = previous;
+            previous = temp;
+            temp = after;
+        }
+    }
+
     public void getHead() {
         System.out.println("Head: " + head.value);
     }
