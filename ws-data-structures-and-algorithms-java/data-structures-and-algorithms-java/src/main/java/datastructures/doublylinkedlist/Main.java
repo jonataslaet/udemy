@@ -5,6 +5,9 @@ public class Main {
         DoublyLinkedList doublyLinkedList = new DoublyLinkedList(7);
         doublyLinkedList.printList();
         doublyLinkedList.append(3);
+        doublyLinkedList.append(2);
+        doublyLinkedList.removeLast();
+        doublyLinkedList.prepend(9);
         doublyLinkedList.printList();
     }
 }
