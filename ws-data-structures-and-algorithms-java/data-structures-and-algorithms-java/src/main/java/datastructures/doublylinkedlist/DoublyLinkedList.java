@@ -68,6 +68,30 @@ public class DoublyLinkedList {
         return temp;
     }
 
+    public Node get(int index) {
+        if (index < 0 || index >= length) return null;
+        Node temp = head;
+        int i = 0;
+        if (index < length/2) {
+            while (i++ < index) {
+                temp = temp.next;
+            }
+            return temp;
+        }
+        i = length - 1;
+        temp = tail;
+        while (i-- > index) {
+            temp = temp.previous;
+        }
+        return temp;
+    }
+
+    public String printValueByIndex(int index) {
+        String result = "Node = " + get(index).value + " | Index = " + index;
+        System.out.println(result);
+        return result;
+    }
+
     public void printHead() {
         System.out.println("Head: " + head.value);
     }

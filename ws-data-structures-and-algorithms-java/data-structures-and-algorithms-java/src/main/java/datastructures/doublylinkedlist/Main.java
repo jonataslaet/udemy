@@ -9,6 +9,7 @@ public class Main {
         doublyLinkedList.removeLast();
         doublyLinkedList.prepend(9);
         doublyLinkedList.removeFirst();
+        doublyLinkedList.printValueByIndex(0);
         doublyLinkedList.printList();
     }
 }
