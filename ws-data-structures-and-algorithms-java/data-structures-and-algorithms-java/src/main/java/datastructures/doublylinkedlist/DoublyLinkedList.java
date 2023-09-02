@@ -53,6 +53,21 @@ public class DoublyLinkedList {
         length++;
     }
 
+    public Node removeFirst() {
+        if (length < 1) return null;
+        Node temp = head;
+        if (length == 1) {
+            head = null;
+            tail = null;
+        } else {
+            head = head.next;
+            head.previous = null;
+            temp.next = null;
+        }
+        length--;
+        return temp;
+    }
+
     public void printHead() {
         System.out.println("Head: " + head.value);
     }
@@ -65,21 +80,26 @@ public class DoublyLinkedList {
         System.out.println("Length: " + length);
     }
 
-    public void printList() {
+    public String printList() {
+        String result = "";
         if (length < 1) {
-            System.out.println("Lista vazia");
+            result = "Lista vazia";
+            System.out.println(result);
         }
         else if (length == 1) {
-            System.out.println("["+head.value+"] - Length = " + length);
+            result = "["+head.value+"] - Length = " + length;
+            System.out.println(result);
         } else {
             Node currrent = head;
 
             while (currrent.next != null) {
-                if (currrent.previous == null) System.out.print("["+currrent.value);
-                else System.out.print(", "+currrent.value);
+                if (currrent.previous == null) result += "["+currrent.value;
+                else result += ", "+currrent.value;
                 currrent = currrent.next;
             }
-            System.out.println(", " + currrent.value + "] - Length = " + length);
+            result += ", " + currrent.value + "] - Length = " + length;
+            System.out.println(result);
         }
+        return result;
     }
 }

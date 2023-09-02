@@ -8,6 +8,7 @@ public class Main {
         doublyLinkedList.append(2);
         doublyLinkedList.removeLast();
         doublyLinkedList.prepend(9);
+        doublyLinkedList.removeFirst();
         doublyLinkedList.printList();
     }
 }
