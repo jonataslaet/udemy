@@ -16,10 +16,11 @@ public class DoubleLinkedListTests {
         doublyLinkedList = new DoublyLinkedList(5);
     }
 
-    @Test
-    void testAppend() {
-        doublyLinkedList.append(3);
-        assertEquals(doublyLinkedList.printList(), "[5, 3] - Length = 2");
+    @ParameterizedTest
+    @ValueSource(ints = {100000, 220, 330, 5330, 4044})
+    void testAppend(int value) {
+        doublyLinkedList.append(value);
+        assertEquals(doublyLinkedList.printList(), "[5, "+value+"] - Length = 2");
     }
 
     @Test
@@ -36,10 +37,11 @@ public class DoubleLinkedListTests {
         assertEquals(doublyLinkedList.printList(), "[3] - Length = 1");
     }
 
-    @Test
-    void testPrepend() {
-        doublyLinkedList.prepend(3);
-        assertEquals(doublyLinkedList.printList(), "[3, 5] - Length = 2");
+    @ParameterizedTest
+    @ValueSource(ints = {10, 20, 30, 50, 40})
+    void testPrepend(int value) {
+        doublyLinkedList.prepend(value);
+        assertEquals(doublyLinkedList.printList(), "["+value+", 5] - Length = 2");
     }
 
     @ParameterizedTest
