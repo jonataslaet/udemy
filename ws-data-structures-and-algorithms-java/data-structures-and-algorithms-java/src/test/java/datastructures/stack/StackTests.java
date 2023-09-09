@@ -39,4 +39,20 @@ public class StackTests {
         expectedResult += "Height = " + 1 + "]\n";
         assertEquals(expectedResult, stack.printStack());
     }
+
+    @ParameterizedTest
+    @ValueSource(ints = {100000, 220, 330, 5330, 4044})
+    void testPop(int value) {
+        int insertedFirst = 5;
+        int expectedRemovedValue = value;
+        String expectedResult = "";
+        expectedResult += "[" + (value) + "]\n";
+        expectedResult += "[" + (insertedFirst) + "]\n";
+        expectedResult += "Height = " + 2 + "]\n";
+        stack.push(value);
+        stack.push(value);
+        Node removedNode = stack.pop();
+        assertEquals(expectedRemovedValue, removedNode.value);
+        assertEquals(expectedResult, stack.printStack());
+    }
 }
