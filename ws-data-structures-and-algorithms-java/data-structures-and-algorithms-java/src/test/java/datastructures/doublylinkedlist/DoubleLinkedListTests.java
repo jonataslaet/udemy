@@ -17,7 +17,7 @@ public class DoubleLinkedListTests {
     }
 
     @ParameterizedTest
-    @ValueSource(ints = {100000, 220, 330, 5330, 4044})
+    @ValueSource(ints = {100000, 220, 330, 5330, 4044, 999, 133, 39393939})
     void testAppend(int value) {
         doublyLinkedList.append(value);
         assertEquals(doublyLinkedList.printList(), "[5, "+value+"] - Length = 2");
@@ -38,14 +38,14 @@ public class DoubleLinkedListTests {
     }
 
     @ParameterizedTest
-    @ValueSource(ints = {10, 20, 30, 50, 40})
+    @ValueSource(ints = {100000, 220, 330, 5330, 4044, 999, 133, 39393939})
     void testPrepend(int value) {
         doublyLinkedList.prepend(value);
         assertEquals(doublyLinkedList.printList(), "["+value+", 5] - Length = 2");
     }
 
     @ParameterizedTest
-    @ValueSource(ints = {0, 1})
+    @ValueSource(ints = {0, 1, 2})
     void testGet(int index) {
         doublyLinkedList.prepend(3);
         doublyLinkedList.append(5);

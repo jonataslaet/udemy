@@ -124,6 +124,12 @@ public class LinkedList {
         return temp;
     }
 
+    public String printValueByIndex(int index) {
+        String result = "Node = " + get(index).value + " | Index = " + index;
+        System.out.println(result);
+        return result;
+    }
+
     public void reverse() {
         Node temp = head;
         head = tail;
@@ -150,13 +156,27 @@ public class LinkedList {
         System.out.println("Length: " + length);
     }
 
-    public void printList() {
-        Node temp = head;
-        System.out.println("Nodes: ");
-        while (temp != null) {
-            System.out.println(temp.value);
-            temp = temp.next;
+    public String printList() {
+        String result = "";
+        if (length < 1) {
+            result = "Lista vazia";
+            System.out.println(result);
         }
-        System.out.println();
+        else if (length == 1) {
+            result = "["+head.value+"] - Length = " + length;
+            System.out.println(result);
+        } else {
+            Node currrent = head;
+            int i = 0;
+            while (currrent.next != null) {
+                if (i == 0) result += "["+currrent.value;
+                else result += ", "+currrent.value;
+                currrent = currrent.next;
+                i++;
+            }
+            result += ", " + currrent.value + "] - Length = " + length;
+            System.out.println(result);
+        }
+        return result;
     }
 }

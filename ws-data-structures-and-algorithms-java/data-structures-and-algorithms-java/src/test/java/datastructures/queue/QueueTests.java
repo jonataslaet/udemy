@@ -1,6 +1,5 @@
 package datastructures.queue;
 
-import datastructures.stack.Stack;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
@@ -17,7 +16,7 @@ public class QueueTests {
     }
 
     @ParameterizedTest
-    @ValueSource(ints = {100000, 220, 330, 5330, 4044})
+    @ValueSource(ints = {100000, 220, 330, 5330, 4044, 999, 133, 39393939})
     void testQueue(int value) {
         int insertedFirst = 5;
         String expectedResult = "";
@@ -31,7 +30,7 @@ public class QueueTests {
     }
 
     @ParameterizedTest
-    @ValueSource(ints = {100000, 220, 330, 5330, 4044})
+    @ValueSource(ints = {100000, 220, 330, 5330, 4044, 999, 133, 39393939})
     void testDequeue(int value) {
         int expectedDequeuedValue = 5;
         String expectedResult = "";

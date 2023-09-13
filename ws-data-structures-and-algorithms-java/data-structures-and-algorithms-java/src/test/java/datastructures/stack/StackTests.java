@@ -18,7 +18,7 @@ public class StackTests {
     }
 
     @ParameterizedTest
-    @ValueSource(ints = {100000, 220, 330, 5330, 4044})
+    @ValueSource(ints = {100000, 220, 330, 5330, 4044, 999, 133, 39393939})
     void testPush(int value) {
         int insertedFirst = 5;
         String expectedResult = "";
@@ -41,7 +41,7 @@ public class StackTests {
     }
 
     @ParameterizedTest
-    @ValueSource(ints = {100000, 220, 330, 5330, 4044})
+    @ValueSource(ints = {100000, 220, 330, 5330, 4044, 999, 133, 39393939})
     void testPop(int value) {
         int insertedFirst = 5;
         int expectedRemovedValue = value;
