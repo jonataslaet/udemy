@@ -36,7 +36,7 @@ void main() {
       theme: ThemeData().copyWith(
         useMaterial3: true,
         colorScheme: kColorScheme,
-        appBarTheme: AppBarTheme().copyWith(
+        appBarTheme: const AppBarTheme().copyWith(
           backgroundColor: kColorScheme.onPrimaryContainer,
           foregroundColor: kColorScheme.primaryContainer,
         ),
@@ -60,7 +60,7 @@ void main() {
               ),
             ),
       ),
-      home: Expenses(),
+      home: const Expenses(),
     ));
   });
 }
