@@ -1,4 +1,6 @@
 <p>Servers Component</p>
 <hr>
+<button class="btn btn-primary" (click)="onCreatedServer()" [disabled]="!allowAddNewServer">Add Server</button>
+<p>{{ serverStatus }}</p>
 <app-server></app-server>
 <app-server></app-server>
