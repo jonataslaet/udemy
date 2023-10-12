@@ -7,6 +7,7 @@ import { Component } from '@angular/core';
 })
 export class ServersComponent {
   serverStatus = 'No server was created';
+  serverName = 'Initial name';
 
   allowAddNewServer: boolean = false;
 
@@ -18,5 +19,9 @@ export class ServersComponent {
 
   onCreatedServer() {
     this.serverStatus = 'A server was created';
+  }
+
+  updateServerName(event: Event) {
+    this.serverName = (<HTMLInputElement>event.target).value;
   }
 }
