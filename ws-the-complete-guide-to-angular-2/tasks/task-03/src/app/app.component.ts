@@ -17,8 +17,8 @@ export class AppComponent {
     this.clicks.push(this.n);
   }
 
-  getBackgroundColor(color: string) {
-    return this.n > 4 ? color : 'white';
+  getBackgroundColor(n: number) {
+    return n > 4 ? 'blue' : 'transparent';
   }
 
   //5: Starting at the 5th log item, give all future log items a blue background (via ngStyle) and white color (via ngClass)
