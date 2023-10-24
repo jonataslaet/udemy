@@ -6,9 +6,16 @@
       </div>
       <br><br>
       <ul class="list-group">
-        <li class="list-group-item" *ngFor="let number of numbers">
-          {{ number }}
-        </li>
+        <div *ngIf="onlyOdd">
+          <li class="list-group-item" *ngFor="let number of oddNumbers">
+            {{ number }}
+          </li>
+        </div>
+        <div *ngIf="!onlyOdd">
+          <li class="list-group-item" *ngFor="let number of evenNumbers">
+            {{ number }}
+          </li>
+        </div>
       </ul>
     </div>
   </div>
