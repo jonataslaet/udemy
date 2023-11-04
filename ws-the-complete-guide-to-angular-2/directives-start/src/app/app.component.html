@@ -16,6 +16,13 @@
             {{ number }}
           </li>
         </div>
+        <ng-template [ngIf]="!onlyOdd">
+          <div>
+            <li class="list-group-item" *ngFor="let number of evenNumbers" [ngClass]="{odd: number % 2 !== 0}" [ngStyle]="{backgroundColor: number % 2 ? 'yellow' : 'transparent'}">
+              {{ number }}
+            </li>
+          </div>
+        </ng-template>
       </ul>
       <p appHighlight>Show the basic highlights</p>
       <p appBetterHighlight [defaultColor]="'yellow'" [highlightColor]="'red'">Show the better highlights</p>
