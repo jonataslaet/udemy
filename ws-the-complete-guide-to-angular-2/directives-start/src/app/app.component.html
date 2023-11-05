@@ -28,6 +28,12 @@
             {{ number }}
           </li>
         </div>
+        <div [ngSwitch]="value">
+          <p *ngSwitchCase="2"> Value is 2</p>
+          <p *ngSwitchCase="3"> Value is 3</p>
+          <p *ngSwitchCase="5"> Value is 5</p>
+          <p *ngSwitchDefault> Value is default</p>
+        </div>
       </ul>
       <p appHighlight>Show the basic highlights</p>
       <p appBetterHighlight [defaultColor]="'yellow'" [highlightColor]="'red'">Show the better highlights</p>
