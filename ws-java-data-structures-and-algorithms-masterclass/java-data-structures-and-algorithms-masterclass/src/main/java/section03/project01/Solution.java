@@ -1,4 +1,4 @@
-package datastructures.arrays.project01;
+package section03.project01;
 
 public class Solution {
 
