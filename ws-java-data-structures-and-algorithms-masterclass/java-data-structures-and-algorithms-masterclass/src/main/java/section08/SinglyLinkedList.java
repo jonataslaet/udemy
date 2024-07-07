@@ -35,7 +35,7 @@ public class SinglyLinkedList {
 
     private void validPositionToInsert(int i) {
         if (i > this.size || i < 0) {
-            throw new RuntimeException("Invalid position for this value to be inserted");
+            throw new IndexOutOfBoundsException("Invalid position for this value to be inserted");
         }
     }
 
