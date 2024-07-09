@@ -13,6 +13,21 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 public class SinglyLinkedListTests {
 
     @Test
+    void testRotate2TimesCounterClockwiseAListWithFiveElements() {
+        SinglyLinkedList list = new SinglyLinkedList();
+        list.insert(0, 10);
+        list.insert(1, 20);
+        list.insert(2, 30);
+        list.insert(3, 40);
+        list.insert(4, 50);
+        list.rotate(2);
+        String resultedList = getOutputFromList(list);
+        String expectedList = "30 -> 40 -> 50 -> 10 -> 20";
+
+        assertEquals(expectedList, resultedList);
+    }
+
+    @Test
     void testRemoveElementAtTheMiddleOfANonEmptyList() {
         SinglyLinkedList list = new SinglyLinkedList();
         list.insert(0, 10);

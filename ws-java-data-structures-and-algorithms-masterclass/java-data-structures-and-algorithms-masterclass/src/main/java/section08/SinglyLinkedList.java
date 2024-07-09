@@ -6,6 +6,21 @@ public class SinglyLinkedList {
     private Node tail;
     private int size;
 
+    public String rotate(int number) {
+        int r = number % size;
+        if (r == 0) return "No Rotation";
+        int i = 0;
+        Node temp = head;
+        while (i++ < r-1) {
+            temp = temp.getNext();
+        }
+        tail.setNext(head);
+        head = temp.getNext();
+        tail = temp;
+        temp.setNext(null);
+        return "Success";
+    }
+
     public Node get(int i) {
         validPositionToRead(i);
         if (i == 0) return head;
