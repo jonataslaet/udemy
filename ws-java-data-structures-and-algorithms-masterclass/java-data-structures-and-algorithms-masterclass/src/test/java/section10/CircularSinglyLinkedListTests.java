@@ -13,6 +13,16 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class CircularSinglyLinkedListTests {
 
+    @Test
+    void testInsertAtTheBeginning() {
+        int firstValue = 70;
+        CircularSinglyLinkedList list = new CircularSinglyLinkedList(firstValue);
+        String expectedList = "80 -> 70";
+        list.insert(0, 80);
+        String resultedList = getOutputFromList(list, 2);
+        assertEquals(expectedList, resultedList);
+    }
+
     @ParameterizedTest
     @ValueSource(ints = {1, 2, 3, 4, 5, 6, 7})
     void testWalkingThroughFirstNElements(int quantityOfElements) {
