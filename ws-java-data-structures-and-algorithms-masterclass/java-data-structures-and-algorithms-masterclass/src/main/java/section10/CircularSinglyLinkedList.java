@@ -28,10 +28,19 @@ public class CircularSinglyLinkedList {
         size++;
     }
 
-    private void insertAtTheEnd(int value) {
+    private void insertAtRightAfterTheEnd(int value) {
         Node node = new Node(value);
         node.setNext(head);
+        tail.setNext(node);
         tail = node;
+        size++;
+    }
+
+    private void insertAtAfterBeginningAndBeforeRightAfterTheEnd(int i, int value) {
+        Node currentNode = new Node(value);
+        Node previousNode = get(i-1);
+        currentNode.setNext(previousNode.getNext());
+        previousNode.setNext(currentNode);
         size++;
     }
 
@@ -41,23 +50,32 @@ public class CircularSinglyLinkedList {
             createFirstNode(value);
         } else if (i == 0) {
             insertAtTheBeginning(value);
-        } else if (i == size - 1) {
-            insertAtTheEnd(value);
+        } else if (i == size) {
+            insertAtRightAfterTheEnd(value);
         } else {
-            Node newNode = new Node(value);
-            Node temp = head;
-            int p = 0;
-            while (p++ < i-1) {
-                temp = temp.getNext();
-            }
-            newNode.setNext(temp.getNext());
-            temp.setNext(newNode);
+            insertAtAfterBeginningAndBeforeRightAfterTheEnd(i, value);
         }
+    }
+
+    public Node get(int i) {
+        validPositionToRead(i);
+        int p = 0;
+        Node temp = head;
+        while (p++ < i) {
+            temp = temp.getNext();
+        }
+        return temp;
     }
 
     private void validPositionToInsert(int i) {
         if (i > this.size || i < 0) {
             throw new IndexOutOfBoundsException("Invalid position for this value to be inserted");
+        }
+    }
+
+    private void validPositionToRead(int i) {
+        if (i >= this.size || i < 0) {
+            throw new IndexOutOfBoundsException("Invalid position for this value to be read");
         }
     }
 
