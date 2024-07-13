@@ -47,7 +47,7 @@ public class CircularSinglyLinkedList {
             Node newNode = new Node(value);
             Node temp = head;
             int p = 0;
-            while (p < i-1) {
+            while (p++ < i-1) {
                 temp = temp.getNext();
             }
             newNode.setNext(temp.getNext());

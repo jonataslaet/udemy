@@ -14,6 +14,30 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 public class CircularSinglyLinkedListTests {
 
     @Test
+    void testInsertAtTheMiddle() {
+        int firstValue = 90;
+        CircularSinglyLinkedList list = new CircularSinglyLinkedList(firstValue);
+        list.insert(0, 80);
+        list.insert(0, 60);
+        list.insert(0, 50);
+
+        String expectedList = "50 -> 60 -> 70 -> 80 -> 90";
+        list.insert(2, 70);
+        String resultedList = getOutputFromList(list, 5);
+        assertEquals(expectedList, resultedList);
+    }
+
+    @Test
+    void testInsertAtTheEnd() {
+        int firstValue = 70;
+        CircularSinglyLinkedList list = new CircularSinglyLinkedList(firstValue);
+        String expectedList = "70 -> 80";
+        list.insert(1, 80);
+        String resultedList = getOutputFromList(list, 2);
+        assertEquals(expectedList, resultedList);
+    }
+
+    @Test
     void testInsertAtTheBeginning() {
         int firstValue = 70;
         CircularSinglyLinkedList list = new CircularSinglyLinkedList(firstValue);
