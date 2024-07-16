@@ -3,15 +3,27 @@ package section10;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
-import section08.SinglyLinkedList;
+import section08.Node;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class CircularSinglyLinkedListTests {
+
+    @Test
+    void testFindValueShouldFind() {
+        int firstValue = 90;
+        CircularSinglyLinkedList list = new CircularSinglyLinkedList(firstValue);
+        list.insert(0, 80);
+        list.insert(0, 60);
+        list.insert(0, 50);
+
+        int expectedValue = 60;
+        Node resultNode = list.findValue(60);
+        assertEquals(expectedValue, resultNode.getValue());
+    }
 
     @Test
     void testInsertAtAfterBeginningAndBeforeRightAfterTheEnd() {

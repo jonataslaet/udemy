@@ -57,6 +57,16 @@ public class CircularSinglyLinkedList {
         }
     }
 
+    public Node findValue(int value) {
+        validPositionToRead(0);
+        Node temp = head;
+        while (temp != null) {
+            if (temp.getValue() == value) return temp;
+            temp = temp.getNext();
+        }
+        return null;
+    }
+
     public Node get(int i) {
         validPositionToRead(i);
         int p = 0;
