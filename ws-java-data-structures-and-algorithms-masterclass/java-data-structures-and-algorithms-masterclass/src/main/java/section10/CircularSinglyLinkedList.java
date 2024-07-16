@@ -1,0 +1,116 @@
+package section10;
+
+import section08.Node;
+
+public class CircularSinglyLinkedList {
+
+    private Node head;
+    private Node tail;
+    private int size;
+
+    public CircularSinglyLinkedList(int value) {
+        createFirstNode(value);
+    }
+
+    private void createFirstNode(int value) {
+        Node node = new Node(value);
+        node.setNext(node);
+        head = node;
+        tail = node;
+        size = 1;
+    }
+
+    private void insertAtTheBeginning(int value) {
+        Node node = new Node(value);
+        node.setNext(head);
+        head = node;
+        tail.setNext(node);
+        size++;
+    }
+
+    private void insertAtRightAfterTheEnd(int value) {
+        Node node = new Node(value);
+        node.setNext(head);
+        tail.setNext(node);
+        tail = node;
+        size++;
+    }
+
+    private void insertAtAfterBeginningAndBeforeRightAfterTheEnd(int i, int value) {
+        Node currentNode = new Node(value);
+        Node previousNode = get(i-1);
+        currentNode.setNext(previousNode.getNext());
+        previousNode.setNext(currentNode);
+        size++;
+    }
+
+    public void insert(int i, int value) {
+        validPositionToInsert(i);
+        if (size == 0) {
+            createFirstNode(value);
+        } else if (i == 0) {
+            insertAtTheBeginning(value);
+        } else if (i == size) {
+            insertAtRightAfterTheEnd(value);
+        } else {
+            insertAtAfterBeginningAndBeforeRightAfterTheEnd(i, value);
+        }
+    }
+
+    public Node findValue(int value) {
+        validPositionToRead(0);
+        Node temp = head;
+        while (temp != null) {
+            if (temp.getValue() == value) return temp;
+            temp = temp.getNext();
+        }
+        return null;
+    }
+
+    public Node get(int i) {
+        validPositionToRead(i);
+        int p = 0;
+        Node temp = head;
+        while (p++ < i) {
+            temp = temp.getNext();
+        }
+        return temp;
+    }
+
+    private void validPositionToInsert(int i) {
+        if (i > this.size || i < 0) {
+            throw new IndexOutOfBoundsException("Invalid position for this value to be inserted");
+        }
+    }
+
+    private void validPositionToRead(int i) {
+        if (i >= this.size || i < 0) {
+            throw new IndexOutOfBoundsException("Invalid position for this value to be read");
+        }
+    }
+
+    public void walkingThroughNFirstElements(int n) {
+        int i = 0;
+        if (n <= i) {
+            System.out.println("Invalid id for an element");
+            return;
+        }
+        Node temp = head;
+        if (temp == null) {
+            System.out.println("There's no element in this list");
+            return;
+        }
+        if (n == 1) {
+            System.out.print(temp.getValue());
+        }
+        else {
+            System.out.print(temp.getValue());
+            temp = temp.getNext();
+            i++;
+            while (i++ < n && temp != null) {
+                System.out.print(" -> " + temp.getValue());
+                temp = temp.getNext();
+            }
+        }
+    }
+}
