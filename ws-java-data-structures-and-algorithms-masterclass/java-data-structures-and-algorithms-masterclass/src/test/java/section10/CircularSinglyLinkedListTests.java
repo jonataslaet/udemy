@@ -8,9 +8,88 @@ import section08.Node;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class CircularSinglyLinkedListTests {
+
+    @ParameterizedTest
+    @ValueSource(ints = {3, 4, 5, 6, 7, 8, 9})
+    void testRemoveAtPosition0ofAListWithMoreThan2Elements(int size) {
+        int lastValue = 80;
+        CircularSinglyLinkedList list = new CircularSinglyLinkedList(lastValue);
+        for (int i = 0; i < size-1; i++) {
+            lastValue = 81 + i;
+            list.insert(list.getSize(), lastValue);
+        }
+
+        Node removedNode = list.remove(0);
+
+        assertEquals(80, removedNode.getValue());
+        assertEquals(size-1, list.getSize());
+        assertNotNull(list.getFirstNode());
+        assertNotNull(list.getLastNode());
+        assertEquals(81, list.getFirstNode().getValue());
+        assertEquals(lastValue, list.getLastNode().getValue());
+    }
+
+    @ParameterizedTest
+    @ValueSource(ints = {3, 4, 5, 6, 7, 8, 9})
+    void testRemoveAtPosition1ofAListWithMoreThan2Elements(int size) {
+        int lastValue = 80;
+        CircularSinglyLinkedList list = new CircularSinglyLinkedList(lastValue);
+        for (int i = 0; i < size-1; i++) {
+            lastValue = 81 + i;
+            list.insert(list.getSize(), lastValue);
+        }
+
+        Node removedNode = list.remove(1);
+
+        assertEquals(81, removedNode.getValue());
+        assertEquals(size-1, list.getSize());
+        assertNotNull(list.getFirstNode());
+        assertNotNull(list.getLastNode());
+        assertEquals(80, list.getFirstNode().getValue());
+        assertEquals(lastValue, list.getLastNode().getValue());
+    }
+
+    @Test
+    void testRemoveAtPosition1ofASize2List() {
+        int firstValue = 90;
+        CircularSinglyLinkedList list = new CircularSinglyLinkedList(firstValue);
+        list.insert(0, 80);
+        Node removedNode = list.remove(1);
+
+        assertEquals(90, removedNode.getValue());
+        assertEquals(1, list.getSize());
+        assertNotNull(list.getFirstNode());
+        assertNotNull(list.getLastNode());
+        assertEquals(list.getFirstNode(), list.getLastNode());
+    }
+
+    @Test
+    void testRemoveAtPositionOofASize2List() {
+        int firstValue = 90;
+        CircularSinglyLinkedList list = new CircularSinglyLinkedList(firstValue);
+        list.insert(0, 80);
+        Node removedNode = list.remove(0);
+
+        assertEquals(80, removedNode.getValue());
+        assertEquals(1, list.getSize());
+        assertNotNull(list.getFirstNode());
+        assertNotNull(list.getLastNode());
+        assertEquals(list.getFirstNode(), list.getLastNode());
+    }
+
+    @Test
+    void testRemoveAtPositionOofASize1List() {
+        int firstValue = 90;
+        CircularSinglyLinkedList list = new CircularSinglyLinkedList(firstValue);
+        Node removedNode = list.remove(0);
+        assertEquals(90, removedNode.getValue());
+        assertEquals(0, list.getSize());
+        assertNull(list.getFirstNode());
+        assertNull(list.getLastNode());
+    }
 
     @Test
     void testFindValueShouldFind() {
@@ -22,6 +101,7 @@ public class CircularSinglyLinkedListTests {
 
         int expectedValue = 60;
         Node resultNode = list.findValue(60);
+
         assertEquals(expectedValue, resultNode.getValue());
     }
 

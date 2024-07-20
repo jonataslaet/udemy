@@ -67,6 +67,48 @@ public class CircularSinglyLinkedList {
         return null;
     }
 
+    public Node remove(int i) {
+        Node temp = head;
+        if (temp == null) {
+            return null;
+        }
+        if (i == 0) {
+            if (size == 1) {
+                head = null;
+                tail = null;
+                size--;
+                return temp;
+            }
+            head = head.getNext();
+            tail.setNext(head);
+            size--;
+            return temp;
+        }
+        Node previous = get(i-1);
+        temp = previous.getNext();
+        if (i == size - 1) {
+            previous.setNext(head);
+            tail = previous;
+            size--;
+            return temp;
+        }
+        previous.setNext(temp.getNext());
+        size--;
+        return temp;
+    }
+
+    public Integer getSize() {
+        return this.size;
+    }
+
+    public Node getFirstNode() {
+        return this.head;
+    }
+
+    public Node getLastNode() {
+        return this.tail;
+    }
+
     public Node get(int i) {
         validPositionToRead(i);
         int p = 0;
