@@ -1,0 +1,12 @@
+<div class="row">
+    <div class="col-xs-12">
+        <p>Add new Servers or blueprints!</p>
+        <label>Server Name</label>
+        <input type="text" class="form-control" #inputName>
+        <label>Server Content</label>
+        <input type="text" class="form-control" #inputContent>
+        <br>
+        <button class="btn btn-primary" (click)="onAddServer(inputName)">Add Server</button>
+        <button class="btn btn-primary" (click)="onAddBlueprint(inputName)">Add Server Blueprint</button>
+    </div>
+</div>
