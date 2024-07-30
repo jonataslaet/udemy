@@ -6,9 +6,11 @@ public class SinglyLinkedList {
     private Node tail;
     private int size;
 
-    public String rotate(int number) {
+    public void rotateCounterClockwiseNTimes(int number) {
         int r = number % size;
-        if (r == 0) return "No Rotation";
+        if (r == 0) {
+            throw new IllegalArgumentException("There's no rotation");
+        }
         int i = 0;
         Node temp = head;
         while (i++ < r-1) {
@@ -18,7 +20,6 @@ public class SinglyLinkedList {
         head = temp.getNext();
         tail = temp;
         temp.setNext(null);
-        return "Success";
     }
 
     public Node get(int i) {
@@ -33,31 +34,46 @@ public class SinglyLinkedList {
         return temp;
     }
 
-    public void insert(int i, int value){
+    private void createFirstNode(int value) {
         Node node = new Node(value);
+        this.head = node;
+        this.tail = node;
+        this.size = 1;
+    }
+
+    private void insertAtTheBeginning(int value) {
+        Node node = new Node(value);
+        node.setNext(head);
+        head = node;
+        this.size++;
+    }
+
+    private void insertAtRightAfterTheEnd(int value) {
+        Node node = new Node(value);
+        tail.setNext(node);
+        tail = node;
+        this.size++;
+    }
+
+    public void insert(int i, int value){
         validPositionToInsert(i);
-        if (size == 0) {
-            this.head = node;
-            this.tail = node;
+        if (isEmptyList()) {
+            createFirstNode(value);
         } else if (i == 0) {
-            node.setNext(head);
-            head = node;
+            insertAtTheBeginning(value);
         } else if (i == size) {
-            tail.setNext(node);
-            tail = node;
+            insertAtRightAfterTheEnd(value);
         } else {
-            int p = 1;
-            Node temp = head;
-            while (temp.getNext() != null) {
-                if (p++ == i) {
-                    node.setNext(temp.getNext());
-                    temp.setNext(node);
-                    break;
-                }
-                temp = temp.getNext();
-            }
+            Node previous = get(i-1);
+            Node newNode = new Node(value);
+            newNode.setNext(previous.getNext());
+            previous.setNext(newNode);
+            size++;
         }
-        size++;
+    }
+
+    private boolean isEmptyList() {
+        return size == 0;
     }
 
     public void deleteAll() {
@@ -88,8 +104,6 @@ public class SinglyLinkedList {
         return removedNode;
     }
 
-
-
     private void validPositionToInsert(int i) {
         if (i > this.size || i < 0) {
             throw new IndexOutOfBoundsException("Invalid position for this value to be inserted");
@@ -117,3 +131,18 @@ public class SinglyLinkedList {
     }
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

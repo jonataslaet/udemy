@@ -11,8 +11,7 @@ public class Main {
         list.insert(4, 50);
 
         list.showAll();
-        String rotated = list.rotate(3);
-        System.out.println("Rotated = " + rotated);
+        list.rotateCounterClockwiseNTimes(3);
         list.showAll();
     }
 }
