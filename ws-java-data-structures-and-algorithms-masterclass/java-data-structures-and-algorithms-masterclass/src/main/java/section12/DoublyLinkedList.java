@@ -22,14 +22,45 @@ public class DoublyLinkedList {
         this.size++;
     }
 
+    private void insertAtRightAfterTheEnd(int value) {
+        DoublyNode node =  new DoublyNode(value);
+        node.setPrevious(tail);
+        tail.setNext(node);
+        tail = node;
+        this.size++;
+    }
+
+    public DoublyNode get(int i) {
+        validPositionToRead(i);
+        if (head == null) return null;
+        DoublyNode temp = head;
+        int p = 0;
+        while (p++ < i) {
+            temp = temp.getNext();
+        }
+        return temp;
+
+    }
+
     public void insert(int i, int value) {
         validPositionToInsert(i);
         if (isEmptyList()) {
             createFirstNode(value);
         } else if (i == 0) {
             insertAtTheBeginning(value);
+        } else if (i == size) {
+            insertAtRightAfterTheEnd(value);
+        } else {
+            DoublyNode foundNode = get(i);
+            DoublyNode newNode = new DoublyNode(value);
+            newNode.setNext(foundNode);
+            newNode.setPrevious(foundNode.getPrevious());
+            foundNode.getPrevious().setNext(newNode);
+            foundNode.setPrevious(newNode);
         }
     }
+
+
 
     private void createFirstNode(int value) {
         DoublyNode node = new DoublyNode(value);

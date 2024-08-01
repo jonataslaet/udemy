@@ -12,7 +12,24 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class DoublyLinkedListTests {
 
     @Test
-    void testCreateDoublyLinkedListWithFirstNode() {
+    void testInsertAtAfterBeginningTillTheLast() {
+        DoublyLinkedList list = new DoublyLinkedList();
+        list.insert(0, 11);
+        list.insert(1, 12);
+        list.insert(0, 10);
+        list.insert(2, 13);
+        list.insert(2, 14);
+        String actualOutput = getOutputFromListFromHeadToTail(list);
+        String expectedOutput = "10 -> 11 -> 14 -> 13 -> 12";
+        assertEquals(expectedOutput, actualOutput);
+
+        actualOutput = getOutputFromListFromTailToHead(list);
+        expectedOutput = "12 -> 13 -> 14 -> 11 -> 10";
+        assertEquals(expectedOutput, actualOutput);
+    }
+
+    @Test
+    void testInsertAtTheBeginning() {
         DoublyLinkedList list = new DoublyLinkedList();
         list.insert(0, 12);
         list.insert(0, 11);
