@@ -1,7 +1,5 @@
 package section12;
 
-import section08.Node;
-
 public class DoublyLinkedList {
     private DoublyNode head;
     private DoublyNode tail;
@@ -22,7 +20,7 @@ public class DoublyLinkedList {
         this.size++;
     }
 
-    private void insertAtRightAfterTheEnd(int value) {
+    private void insertAtTheEnd(int value) {
         DoublyNode node =  new DoublyNode(value);
         node.setPrevious(tail);
         tail.setNext(node);
@@ -49,7 +47,7 @@ public class DoublyLinkedList {
         } else if (i == 0) {
             insertAtTheBeginning(value);
         } else if (i == size) {
-            insertAtRightAfterTheEnd(value);
+            insertAtTheEnd(value);
         } else {
             DoublyNode foundNode = get(i);
             DoublyNode newNode = new DoublyNode(value);
