@@ -28,7 +28,7 @@ public class CircularSinglyLinkedList {
         size++;
     }
 
-    private void insertAtRightAfterTheEnd(int value) {
+    private void insertAtTheEnd(int value) {
         Node node = new Node(value);
         node.setNext(head);
         tail.setNext(node);
@@ -36,7 +36,7 @@ public class CircularSinglyLinkedList {
         size++;
     }
 
-    private void insertAtAfterBeginningAndBeforeRightAfterTheEnd(int i, int value) {
+    private void insertBetweenTheBeginningAndTheEnd(int i, int value) {
         Node currentNode = new Node(value);
         Node previousNode = get(i-1);
         currentNode.setNext(previousNode.getNext());
@@ -51,9 +51,9 @@ public class CircularSinglyLinkedList {
         } else if (i == 0) {
             insertAtTheBeginning(value);
         } else if (i == size) {
-            insertAtRightAfterTheEnd(value);
+            insertAtTheEnd(value);
         } else {
-            insertAtAfterBeginningAndBeforeRightAfterTheEnd(i, value);
+            insertBetweenTheBeginningAndTheEnd(i, value);
         }
     }
 

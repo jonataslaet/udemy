@@ -106,7 +106,7 @@ public class CircularSinglyLinkedListTests {
     }
 
     @Test
-    void testInsertAtAfterBeginningAndBeforeRightAfterTheEnd() {
+    void testInsertBetweenTheBeginningAndTheEnd() {
         int firstValue = 90;
         CircularSinglyLinkedList list = new CircularSinglyLinkedList(firstValue);
         list.insert(0, 80);
@@ -120,7 +120,7 @@ public class CircularSinglyLinkedListTests {
     }
 
     @Test
-    void testInsertAtRightAfterTheEnd() {
+    void testInsertAtTheEnd() {
         int firstValue = 70;
         CircularSinglyLinkedList list = new CircularSinglyLinkedList(firstValue);
         String expectedList = "70 -> 80";
